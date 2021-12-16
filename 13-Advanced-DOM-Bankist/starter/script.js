@@ -53,3 +53,26 @@ btnScrollTo.addEventListener('click', function () {
   //modern
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+// page navigation
+
+// without event deligation
+// const navLinks = document.querySelectorAll('.nav__link');
+
+// navLinks.forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// add event listener to common element
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
